@@ -1,0 +1,45 @@
+{
+  "name": "talk-to-history-hpl-correspondence-transcriber",
+
+  // Paths relative to .devcontainer/ directory location
+  "dockerComposeFile": "compose.yml",
+
+  "service": "app",
+
+  "workspaceFolder": "/workspaces",
+
+  // No postStartCommand - entrypoint.sh handles uv sync on container start
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        // Points to venv in named volume (compose.yml venv:/workspaces/.venv)
+        // Volume persists across container recreations but venv is rebuilt each time
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+
+        // Ruff formatting matches pre-commit hooks (ruff-check, ruff-format)
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          }
+        },
+
+        // Pytest config aligns with .pytest.toml (testpaths, pythonpath)
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false
+      }
+    }
+  },
+
+  // Matches Dockerfile USER and git config user
+  "remoteUser": "shanemcgovern"
+}

@@ -1,17 +1,25 @@
 [project]
-name = "uv-python-3-11"
+name = "talk-to-history-hpl-correspondence-transcriber"
 version = "0.1.0"
-description = "Add your description here"
+description = "This is a production-ready OCR pipeline that transcribes H.P. Lovecraft's handwritten correspondence from Brown University's IIIF archive. Using Ollama vision models (qwen2.5vl:3b) with GPU acceleration, it preserves archaic spelling, punctuation, and 18th-century prose style."
 readme = "README.md"
 requires-python = "~=3.11.0"
-dependencies = []
+dependencies = [
+    "langchain>=1.2.8",
+    "langchain-ollama>=1.0.1",
+    "pillow>=12.1.0",
+    "qwen-vl-utils>=0.0.14",
+    "tenacity>=9.1.2",
+]
 
 [tool.uv]
 package = false
 
 [dependency-groups]
 dev = [
+    "genbadge[coverage]>=1.1.3",
     "pre-commit>=4.5.1",
+    "prettier>=0.0.7",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
 ]

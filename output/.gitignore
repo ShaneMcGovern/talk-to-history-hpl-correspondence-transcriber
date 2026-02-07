@@ -1,0 +1,31 @@
+#
+# Folder ./output
+#
+*
+!.gitignore
+#
+# Example transcriptions (txt) file from metadata/418056.json referenced (pid) urls:
+# https://repository.library.brown.edu/iiif/image/bdr:929604/full/full/0/default.jpg
+#
+!929604.txt
+!929605.txt
+!929606.txt
+!929607.txt
+!929608.txt
+!929609.txt
+!929610.txt
+!929611.txt
+!929612.txt
+!929613.txt
+!929614.txt
+!929615.txt
+!929616.txt
+!929617.txt
+!929618.txt
+!929619.txt
+!929620.txt
+!929621.txt
+!929622.txt
+!929623.txt
+!929624.txt
+!929625.txt

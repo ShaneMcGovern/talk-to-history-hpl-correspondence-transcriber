@@ -1,0 +1,42 @@
+---
+services:
+  app:
+    # Build context points to parent (..) to access pyproject.toml and source
+    # files while Dockerfile lives in .devcontainer/ subdirectory for
+    # organization
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      # Parent directory bind mount for source code sync
+      - ..:/workspaces
+
+      # Named volume shadows the bind mount at /workspaces/.venv
+      # Critical: .venv contains platform-specific binaries (Linux) that
+      # differ from host OS (macOS/Windows). Named volume preserves
+      # container-built venv separately from host filesystem. See
+      # entrypoint.sh for venv initialization.
+      - venv:/workspaces/.venv
+
+    working_dir: /workspaces
+
+    # init: true runs Tini as PID 1 for proper signal handling and
+    # zombie reaping
+    init: true
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    ports:
+      - "11434:11434"
+
+volumes:
+  # Persists Python virtual environment across 'docker compose down'
+  # Contains uv-installed dependencies from entrypoint.sh
+  venv:
