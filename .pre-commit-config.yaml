@@ -1,20 +1,29 @@
 ---
 repos:
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        types_or: [yaml, json]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.11
     hooks:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.37.1
+  - repo: https://github.com/reteps/dockerfmt
+    rev: v0.3.9
     hooks:
-      - id: yamllint
-        name: yamllint
-        description: This hook runs yamllint.
-        entry: yamllint
-        language: python
-        types: [file, yaml]
+      - id: dockerfmt
+        args:
+          - --indent=4
+          - --write
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.47.0
+    hooks:
+      - id: markdownlint
+        args:
+          - --fix
   - repo: local
     hooks:
       - id: pytest
@@ -24,3 +33,7 @@ repos:
         types: [python]
         pass_filenames: false
         always_run: true
+  - repo: https://github.com/Weird-Sheep-Labs/coverage-pre-commit
+    rev: 0.1.1
+    hooks:
+      - id: coverage-badge

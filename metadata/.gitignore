@@ -1,0 +1,9 @@
+#
+# Folder `./metadata`. Keep single example JSON
+#
+*
+!.gitignore
+#
+# Example IIIF file
+#
+!418056.json

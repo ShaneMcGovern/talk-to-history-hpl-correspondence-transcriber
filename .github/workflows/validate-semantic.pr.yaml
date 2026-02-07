@@ -1,5 +1,5 @@
 ---
-name: "Validate semantic title of pull request"
+name: "Semantically valid PR"
 
 on:
   pull_request_target:

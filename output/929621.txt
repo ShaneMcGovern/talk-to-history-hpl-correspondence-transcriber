@@ -1,0 +1,1 @@
+VIOLATION PENALTY: Any deviation from these rules will result in invalid output.
