@@ -1,0 +1,14 @@
+# https://docs.pytest.org/en/stable/reference/reference.html#ini-options-ref
+[pytest]
+minversion = "9.0"
+addopts = [
+    "--cov-fail-under=80",
+    "--cov-report=term-missing",
+    "--cov=src", 
+] 
+testpaths = [
+    "tests",
+]
+pythonpath = [
+    "src",
+]
