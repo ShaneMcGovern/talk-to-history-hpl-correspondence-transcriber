@@ -42,6 +42,7 @@
     "pyvenv",
     "qwen",
     "rabbitmq",
+    "RETRYABLE",
     "ropeproject",
     "scrapy",
     "sdist",
