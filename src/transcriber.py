@@ -21,7 +21,7 @@ from tenacity import (
     wait_random_exponential,
 )
 
-logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+logging.basicConfig(level=logging.INFO, stream=sys.stdout, filename='transcriber.log')
 logger = logging.getLogger(__name__)
 
 
