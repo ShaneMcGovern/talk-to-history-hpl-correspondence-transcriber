@@ -17,7 +17,7 @@ from tenacity import (
 
 import transcriber
 
-logging.basicConfig(level=logging.DEBUG, stream=sys.stdout, filename='helper.log')
+logging.basicConfig(level=logging.DEBUG, stream=sys.stdout, filename="helper.log")
 logger = logging.getLogger(__name__)
 
 METADATA_DIR = Path("metadata")

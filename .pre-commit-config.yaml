@@ -33,7 +33,12 @@ repos:
         types: [python]
         pass_filenames: false
         always_run: true
-  - repo: https://github.com/Weird-Sheep-Labs/coverage-pre-commit
-    rev: 0.1.1
+  - repo: local
     hooks:
       - id: coverage-badge
+        name: coverage-badge
+        entry: genbadge coverage -i reports/coverage/coverage.xml -o reports/coverage/coverage-badge.svg
+        language: python
+        pass_filenames: false
+        additional_dependencies:
+          - setuptools<81
