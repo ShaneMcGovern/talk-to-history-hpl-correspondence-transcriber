@@ -17,8 +17,14 @@ from tenacity import (
 
 import transcriber
 
-logging.basicConfig(level=logging.DEBUG, stream=sys.stdout, filename="helper.log")
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
+stream_handler = logging.StreamHandler(sys.stdout)
+logger.addHandler(stream_handler)
+
+file_handler = logging.FileHandler("application.log")
+logger.addHandler(file_handler)
 
 METADATA_DIR = Path("metadata")
 REQUEST_TIMEOUT = (3.05, 30)
