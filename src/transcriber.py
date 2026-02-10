@@ -21,9 +21,17 @@ from tenacity import (
     wait_random_exponential,
 )
 
-logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+stream_handler = logging.StreamHandler(sys.stdout)
+# stream_handler.setLevel(logging.DEBUG)
+
+file_handler = logging.FileHandler("application.log")
+file_handler.setLevel(logging.INFO)
+
+logger.addHandler(stream_handler)
+logger.addHandler(file_handler)
 
 RETRYABLE_HTTP_CODES = {408, 429, 500, 502, 503, 504}
 REQUEST_TIMEOUT = (3.05, 30)

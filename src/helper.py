@@ -17,8 +17,14 @@ from tenacity import (
 
 import transcriber
 
-logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
+stream_handler = logging.StreamHandler(sys.stdout)
+logger.addHandler(stream_handler)
+
+file_handler = logging.FileHandler("application.log")
+logger.addHandler(file_handler)
 
 METADATA_DIR = Path("metadata")
 REQUEST_TIMEOUT = (3.05, 30)
@@ -230,7 +236,6 @@ def process_batch_ocr(
                 continue
 
         logger.info(f"Completed processing all images for {pid}")
-        break
 
     logger.info(
         f"Batch OCR complete. Processed: {total_processed}, Failed: {total_failed}"
